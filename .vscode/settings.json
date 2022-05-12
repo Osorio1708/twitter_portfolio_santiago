@@ -1,0 +1,17 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "zemoga-test-db.crhpedy9xxto.us-east-1.rds.amazonaws.com",
+            "port": 3306,
+            "driver": "MySQL",
+            "password": "Zem0ga.101",
+            "username": "zemoga_test_db",
+            "name": "zemoga",
+            "database": "zemoga-test-db"
+        }
+    ]
+}

@@ -1,12 +1,12 @@
 import { Controller, Get } from '@nestjs/common';
 
-import { TwitterService } from '../../services/twitter/twitter.service';
+import { TwitterService } from '../services/twitter.service';
 
 @Controller('twitter')
 export class TwitterController {
   constructor(private twitterService: TwitterService) {}
   @Get()
   getTimeline() {
-    return 'Twitter controller';
+    return this.twitterService.getTimeline();
   }
 }

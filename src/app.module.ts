@@ -1,11 +1,19 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
-import { TwitterService } from './services/twitter/twitter.service';
-import { TwitterController } from './controllers/twitter/twitter.controller';
-
+import { AppService } from './app.service';
+import { TwitterModule } from './twitter/twitter.module';
+import config from './config';
 @Module({
-  imports: [],
-  controllers: [AppController, TwitterController],
-  providers: [TwitterService],
+  imports: [
+    TwitterModule,
+    ConfigModule.forRoot({
+      envFilePath: '.env',
+      load: [config],
+      isGlobal: true,
+    }),
+  ],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
