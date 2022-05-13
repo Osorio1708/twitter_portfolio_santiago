@@ -8,5 +8,10 @@ export default registerAs('config', () => {
       access_token_key: process.env.ACCESS_TOKEN_KEY,
       access_token_secret: process.env.ACCESS_TOKEN_SECRET,
     },
+    AWS: {
+      region: process.env.AWS_DEFAULT_REGION,
+      accessKeyId: process.env.AWS_ACCES_KEY_ID,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    },
   };
 });
