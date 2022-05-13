@@ -3,11 +3,11 @@ import { ConfigType } from '@nestjs/config';
 import config from '../config';
 @Injectable()
 export class DynamoDbService {
+  private AWS: any;
+  private dynamoClient: any;
+  private tableName: string;
   constructor(
     @Inject(config.KEY) private configService: ConfigType<typeof config>,
-    private AWS: any,
-    private dynamoClient: any,
-    private tableName: string,
   ) {
     this.AWS = require('aws-sdk');
   }
@@ -34,12 +34,22 @@ export class DynamoDbService {
       TableName: this.tableName,
       Item: portfolio,
     };
-    await this.dynamoClient.put(params).promise();
+    await this.dynamoClient
+      .put(params)
+      .promise()
+      .then((data) => {
+        console.log('then');
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log('catch');
+        console.log(err);
+      });
   }
   async getPortfolioById(id) {
     const params = {
       TableName: this.tableName,
-      hey: {
+      Key: {
         id,
       },
     };
@@ -48,7 +58,7 @@ export class DynamoDbService {
   async deletePorfolioById(id) {
     const params = {
       TableName: this.tableName,
-      hey: {
+      Key: {
         id,
       },
     };
