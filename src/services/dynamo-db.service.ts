@@ -34,7 +34,6 @@ export class DynamoDbService {
       TableName: this.tableName,
       Item: portfolio,
     };
-    console.log(portfolio);
     await this.dynamoClient
       .put(params)
       .promise()

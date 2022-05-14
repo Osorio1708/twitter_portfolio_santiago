@@ -17,7 +17,8 @@ export class PortfolioService {
     let response = new ResponseBase();
     try {
       portfolio = {
-        id: uuidv4(),
+        id:
+          typeof data.id === 'undefined' || data.id === '' ? uuidv4() : data.id,
         name: data.name,
         names: data.names,
         phone: data.phone,

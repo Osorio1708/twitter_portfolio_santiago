@@ -1,5 +1,8 @@
 import { IsString, IsNotEmpty, Length, IsOptional } from 'class-validator';
+import { PartialType } from '@nestjs/swagger';
 export class CreatePortfolioDto {
+  @IsString()
+  id: string;
   @IsString()
   @IsNotEmpty()
   name: string;

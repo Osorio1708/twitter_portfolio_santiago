@@ -1,4 +1,5 @@
 export const CreatePortfolioDtoHelper = {
+  id: '',
   name: 'Santiago',
   names: 'Santiago Osorio Quintero',
   phone: '3022395958',

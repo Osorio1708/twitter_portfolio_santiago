@@ -42,7 +42,6 @@ describe('PortfolioController', () => {
         const response = await controller.postPortfolio(
           CreatePortfolioDtoHelper,
         );
-        console.log(response);
         expect(typeof response.data.id).toBe('string');
         expect(response.code).toBe(200);
       });

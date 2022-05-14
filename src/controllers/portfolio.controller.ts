@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
 import { CreatePortfolioDto } from '../dto/porfolio.dto';
 import { PortfolioService } from '../services/portfolio.service';
 import { RenderPortfolio } from '../views/portfolio';
@@ -19,7 +19,7 @@ export class PortfolioController {
     const render = new RenderPortfolio(data);
     return render.sendScreen();
   }
-  @Get('delete/:id')
+  @Delete('delete/:id')
   deletePortfolio(@Param('id') id: string) {
     return this.portfolioService.deletePortfolio(id);
   }
