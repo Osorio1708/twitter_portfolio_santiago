@@ -4,7 +4,9 @@ export class RenderPortfolio {
     const dataToRender = await this.portfolio.then((element) => {
       return element.data.Item;
     });
-    return `
+    return typeof dataToRender === 'undefined'
+      ? `<h1>User doesnt exist</h1>`
+      : `
     <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
     rel="stylesheet"

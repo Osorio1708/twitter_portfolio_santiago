@@ -1,7 +1,6 @@
 import { ConfigModule } from '@nestjs/config';
 import { Test, TestingModule } from '@nestjs/testing';
 import config from '../config';
-import { TwitterService } from '../services/twitter.service';
 import { TwitterModule } from '../modules/twitter.module';
 import { TwitterController } from '../controllers/twitter.controller';
 
@@ -17,7 +16,6 @@ describe('TwitterController', () => {
           isGlobal: true,
         }),
       ],
-      providers: [TwitterService],
     }).compile();
 
     controller = module.get<TwitterController>(TwitterController);
@@ -29,7 +27,6 @@ describe('TwitterController', () => {
 
   it('getTimeline must provide array of twits', async () => {
     const result = await controller.getTimeline();
-    console.log(typeof result[0].user.id);
     expect(typeof result).toBe('object');
     expect(result.length).toBeGreaterThan(0);
     expect(typeof result[0].user.id).toBe('number');

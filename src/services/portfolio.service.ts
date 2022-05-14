@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { DynamoDbService } from './dynamo-db.service';
 import { TwitterService } from './twitter.service';
-import { Portfolio, Twit } from 'src/models/portfolio';
-import { CreatePortfolioDto } from 'src/dto/porfolio.dto';
+import { Portfolio, Twit } from '../models/portfolio';
+import { CreatePortfolioDto } from '../dto/porfolio.dto';
 import { v4 as uuidv4 } from 'uuid';
-import { ResponseBase } from 'src/dto/response.dto';
+import { ResponseBase } from '../dto/response.dto';
 
 @Injectable()
 export class PortfolioService {

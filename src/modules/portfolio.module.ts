@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { PortfolioController } from 'src/controllers/portfolio.controller';
-import { DynamoDbService } from 'src/services/dynamo-db.service';
-import { PortfolioService } from 'src/services/portfolio.service';
-import { TwitterService } from 'src/services/twitter.service';
+import { PortfolioController } from '../controllers/portfolio.controller';
+import { DynamoDbService } from '../services/dynamo-db.service';
+import { PortfolioService } from '../services/portfolio.service';
+import { TwitterService } from '../services/twitter.service';
 
 @Module({
   controllers: [PortfolioController],
