@@ -34,16 +34,12 @@ export class DynamoDbService {
       TableName: this.tableName,
       Item: portfolio,
     };
+    console.log(portfolio);
     await this.dynamoClient
       .put(params)
       .promise()
-      .then((data) => {
-        console.log('then');
-        console.log(data);
-      })
       .catch((err) => {
-        console.log('catch');
-        console.log(err);
+        throw err;
       });
   }
   async getPortfolioById(id) {

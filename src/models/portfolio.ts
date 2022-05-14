@@ -1,3 +1,5 @@
+import { StringMapKey } from "aws-sdk/clients/finspacedata";
+
 export class Portfolio {
   id: string;
   name: string;
@@ -10,7 +12,10 @@ export class Portfolio {
   tittle: string;
   address: string;
   email: string;
-  experience: string;
+  experience_01: string;
+  experience_02: string;
+  experience_03: string;
+  profile: string;
   twits: Twit[];
 }
 

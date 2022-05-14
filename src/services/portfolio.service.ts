@@ -28,7 +28,10 @@ export class PortfolioService {
         tittle: data.tittle,
         address: data.address,
         email: data.email,
-        experience: data.experience,
+        experience_01: data.experience_01,
+        experience_02: data.experience_02,
+        experience_03: data.experience_02,
+        profile: data.profile,
         twits: [],
       };
       portfolio.twits = await this.twitterService
@@ -46,13 +49,13 @@ export class PortfolioService {
             };
             twits.push(twit);
           }
-          this.dynamoDBService.initConection();
-          this.dynamoDBService.addOrUpdatePortfolio(portfolio);
           return twits;
         })
         .catch((err) => {
           throw err;
         });
+      this.dynamoDBService.initConection();
+      this.dynamoDBService.addOrUpdatePortfolio(portfolio);
       response.data = portfolio;
       response.status = 'Ok';
       response.code = 200;
@@ -95,7 +98,7 @@ export class PortfolioService {
     try {
       this.dynamoDBService.initConection();
       await this.dynamoDBService.deletePorfolioById(id);
-      response.data = 'id';
+      response.data = id;
       response.status = 'Ok';
       response.code = 200;
       response.message = 'Portfolio was deleted';
@@ -105,6 +108,37 @@ export class PortfolioService {
       response.status = 'Error';
       response.code = 500;
       response.message = 'Server cant delete porftolio';
+      return response;
+    }
+  }
+
+  async getPorfolioList() {
+    this.dynamoDBService.initConection();
+    let response = new ResponseBase();
+    try {
+      const portfolios = await this.dynamoDBService
+        .getAllPortfolios()
+        .then((element) => {
+          let porfolios = [];
+          for (let i = 0; i < element.Items.length; i++) {
+            const { id, email, name } = element.Items[i];
+            porfolios.push({ id, email, name });
+          }
+          return porfolios;
+        })
+        .catch((err) => {
+          throw err;
+        });
+      response.data = portfolios;
+      response.status = 'Ok';
+      response.code = 200;
+      response.message = 'Server get list of portfolios';
+      return response;
+    } catch (err) {
+      response.data = err;
+      response.status = 'Error';
+      response.code = 500;
+      response.message = 'Server cant get list of porftolios';
       return response;
     }
   }

@@ -24,5 +24,11 @@ export class CreatePortfolioDto {
   @IsString()
   email: string;
   @IsString()
-  experience: string;
+  experience_01: string;
+  @IsString()
+  experience_02: string;
+  @IsString()
+  experience_03: string;
+  @IsString()
+  profile: string;
 }
